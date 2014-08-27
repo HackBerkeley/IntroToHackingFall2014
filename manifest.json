@@ -1,0 +1,10 @@
+{
+    "name": "Cal Autofill",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description" : "Automatically logs you into Calnet stuff",
+    "content_scripts": [{
+        "matches": ["http://auth.berkeley.edu/*", "https://auth.berkeley.edu/*", "http://wlan.berkeley.edu/*", "https://wlan.berkeley.edu/*"],
+        "js": ["js/jquery-2.1.1.js", "js/content.js"]
+    }]
+}
