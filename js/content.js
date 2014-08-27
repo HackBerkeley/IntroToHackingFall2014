@@ -7,7 +7,7 @@ global variables `username` and `password`.
 
 @return {Boolean} true if a username and password exists in Local Storage.
 */
-function getCredentials(){
+function getCredentials() {
     username = localStorage.getItem("username");
     password = localStorage.getItem("password");
     if (username && password) {
@@ -15,6 +15,11 @@ function getCredentials(){
     } else {
         return false;
     }
+}
+
+function setCredentials(username, password) {
+    localStorage.setItem('username', username);
+    localStorage.setItem('password', password);
 }
 
 $(document).ready(function(){
@@ -34,8 +39,7 @@ $(document).ready(function(){
             $("#loginForm").submit(function(e){
                 username = $("input#username").val();
                 password = $("input#password").val();
-                localStorage.setItem("username", username);
-                localStorage.setItem("password", password);
+                setCredentials(username, password);
                 console.log("Setting new username and passwords");
             });
         }
