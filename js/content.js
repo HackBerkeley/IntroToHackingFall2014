@@ -1,10 +1,16 @@
 var username;
 var password;
 
+/**
+Gets the username and password out of Local Storage and sets these on the
+global variables `username` and `password`.
+
+@return {Boolean} true if a username and password exists in Local Storage.
+*/
 function getCredentials(){
     username = localStorage.getItem("username");
     password = localStorage.getItem("password");
-    if(username && password){
+    if (username && password) {
         return true;
     } else {
         return false;
@@ -12,18 +18,19 @@ function getCredentials(){
 }
 
 $(document).ready(function(){
-    if($("input#username").length && $("input#password").length){
-       /* Fetches Credentials */
-       var hasCredentials = getCredentials();
-       if (hasCredentials && $('.error').length == 0) {
-            console.log("Has credentials already");
+    if($("input#username").length != 0 && $("input#password").length != 0) {
+        // Fetches Credentials
+        var hasCredentials = getCredentials();
+        if (hasCredentials && $('.error').length == 0) { // No error
+            console.log("Attempting to auto-fill credentials");
+
             $("input#username").val(username);
             $("input#password").val(password);
             $("input.button").click();
-            
-            console.log("There's username filled in already!");
-       } else {
-           console.log("has no credentials");
+        } else {
+            console.log("No credentials saved or there was an error");
+
+            // Override the behavior when you submit the form
             $("#loginForm").submit(function(e){
                 username = $("input#username").val();
                 password = $("input#password").val();
@@ -31,8 +38,8 @@ $(document).ready(function(){
                 localStorage.setItem("password", password);
                 console.log("Setting new username and passwords");
             });
-       }
+        }
     } else {
-        console.log("No form detected");
+        console.log("No login form detected");
     }
 });
