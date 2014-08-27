@@ -15,11 +15,12 @@ $(document).ready(function(){
     if($("input#username").length && $("input#password").length){
        /* Fetches Credentials */
        var hasCredentials = getCredentials();
-       if(hasCredentials && !$("input#username").val()){
+       if (hasCredentials && $('.error').length == 0) {
             console.log("Has credentials already");
             $("input#username").val(username);
             $("input#password").val(password);
             $("input.button").click();
+            
             console.log("There's username filled in already!");
        } else {
            console.log("has no credentials");
