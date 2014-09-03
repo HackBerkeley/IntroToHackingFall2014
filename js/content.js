@@ -1,6 +1,5 @@
-var username;
-var password;
 
+<<<<<<< HEAD
 /**
 Gets the username and password out of Local Storage and sets these on the
 global variables `username` and `password`.
@@ -47,3 +46,6 @@ $(document).ready(function(){
         console.log("No login form detected");
     }
 });
+=======
+
+>>>>>>> starter
